@@ -31,6 +31,8 @@ public class User implements UserDetails {
     private Role role;
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
     private List<Token> tokens;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    private List<Otp> otps;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
