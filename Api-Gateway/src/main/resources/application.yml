@@ -1,0 +1,34 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+          filters:
+            - AuthenticationFilter
+        - id: rental-service
+          uri: lb://rental-service
+          predicates:
+            - Path=/rental/**
+          filters:
+            - AuthenticationFilter
+      globalcors:
+        cors-configurations:
+          '[/**]' :
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+
+  application:
+    name: api-gateway
+
+server:
+  port: 8080
+logging:
+  level:
+    org.springframework.cloud.gateway.route.RouteDefinitionLocator: INFO
+    org.springframework.cloud.gateway: TRACE
+    root: INFO

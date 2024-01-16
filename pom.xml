@@ -19,6 +19,8 @@
     <module>Api-Gateway</module>
     <module>Discovery-Service</module>
     <module>Auth-Service</module>
+    <module>Rental-Service</module>
+    <module>UserManagement-Service</module>
   </modules>
 
   <properties>
